@@ -16,7 +16,7 @@ class expertSeeder extends Seeder
         for ($i = 1; $i <= 6; $i++) {
             Expert::insert([
                 'name' => fake()->name(), // Limit to 50 characters for title
-                'expertise' => fake()->text(),
+                'expertise' => fake()->text(10),
                 'bio' => fake()->paragraph(), // Use paragraph text
                 'rating' => fake()->randomFloat(1,4,5), // Use a valid date
                 'image' => fake()->imageUrl(),
