@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
-Route::view('/home', 'features.home');
+Route::get('/', [ArticleController::class, 'showAllArticle']);
+Route::get('/home', [ArticleController::class, 'showAllArticle']);
 Route::view('/aboutUs', 'features.aboutUs');
 Route::view('/ourWorks', 'features.ourWorks');
 Route::view('/mentorship', 'features.mentorship');
