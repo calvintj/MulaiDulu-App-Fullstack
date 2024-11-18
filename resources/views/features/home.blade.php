@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <h6 class="card-title">{{ $articles[0]->judul }}</h6>
                         <p class="card-text">by {{ $articles[0]->penulis }}</p>
-                        {{-- <button><a href="{{ url('bookDetail/' . $article->id) }}">Detail</a></button> --}}
+                        <button><a href="{{ url('articleDetail/' . $articles[0]->id) }}">Detail</a></button>
                     </div>
                 </div>
             {{-- @endforeach --}}

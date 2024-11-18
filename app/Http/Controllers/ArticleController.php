@@ -14,6 +14,6 @@ class ArticleController extends Controller
 
     public function showDetailArticle(Request $request){
         $article = Article::find($request->id);
-        return view('detailarticle')->with('article', $article);
+        return view('features.articleDetail')->with('article', $article);
     }
 }
