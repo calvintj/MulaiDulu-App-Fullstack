@@ -11,3 +11,4 @@ Route::view('/profile', 'features.profile');
 
 Route::view('/login', 'account.login');
 Route::view('/register', 'account.register');
+
