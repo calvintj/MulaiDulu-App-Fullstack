@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ArticleTable', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id('articleID');
             $table->string('judul');
             $table->string('penulis');
             $table->longText('isi_article');
             $table->date('post_date');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -9,11 +9,11 @@ class ArticleController extends Controller
 {
     public function showAllArticle(){
         $articles = Article::all();
-        return view('articlepage')->with('article', $articles);
+        return view('features.home')->with('articles', $articles);
     }
 
     public function showDetailArticle(Request $request){
-        $artikel = Article::find($request->id);
-        return view('detailarticle')->with('artikle', $artikel);
+        $article = Article::find($request->id);
+        return view('detailarticle')->with('article', $article);
     }
 }
