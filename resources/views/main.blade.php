@@ -8,23 +8,30 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     @yield('head')
 </head>
 
-<body>
+<body style="font-family: 'Poppins', sans-serif;">
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
+            <!-- Logo -->
             <a class="navbar-brand" href="/home" style="margin: 0;">
                 <img src="{{ asset('image/logo.png') }}" alt="" style="width: 100px; height: auto;">
             </a>
+            
+            <!-- Toggler Button for Mobile View -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+    
+            <!-- Navbar Content -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <!-- Navigation Links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="/home">Home</a>
                     </li>
@@ -44,9 +51,17 @@
                         <a class="nav-link" href="/profile">Profile</a>
                     </li>
                 </ul>
+    
+                <!-- Login and Register Buttons -->
+                <div class="d-flex">
+                    <a class="btn btn-outline-light me-2" style="width: 100px;" href="/login">Login</a>
+                    <a class="btn btn-light" style="width: 100px" href="/register">Register</a>
+                </div>
             </div>
         </div>
     </nav>
+    
+    
     @yield('content')
 
     <footer class="bg-dark text-white text-center py-3">

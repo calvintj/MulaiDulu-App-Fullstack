@@ -3,8 +3,8 @@
 @section('title', 'Home')
 
 @section('content')
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Experts List</h1>
+    <div class="container mt-5 pb-5">
+        <h1 class="text-center mb-4">Our Experts</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach ($experts as $expert)
                 <div class="col">

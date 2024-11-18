@@ -17,7 +17,7 @@ class ArticleController extends Controller
     }
 
     public function showAllArticle(){
-        $articles = Article::all();
+        $articles = Article::paginate(9);
         return view('features.articles')->with('articles', $articles);
     }
 

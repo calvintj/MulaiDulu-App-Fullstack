@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-    <h1 class="text-center mt-4 mb-4">Articles List</h1>
+    <h1 class="text-center mt-4 mb-4">Your Daily Business Articles</h1>
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-4 pb-5">
             @foreach ($articles as $article)
@@ -22,4 +22,13 @@
             @endforeach
         </div>
     </div>
+
+    <!-- Pagination Links -->
+    <div class="container d-flex flex-column align-items-center">
+        <div>Showing {{ $articles->firstItem() }} to {{ $articles->lastItem() }} of {{ $articles->total() }} results</div>
+        <div>
+            {{ $articles->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
+    
 @endsection
