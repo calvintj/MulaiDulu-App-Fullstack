@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section class="contact section container py-5" data-aos="fade-up">
+    <section class="contact section container py-5" data-aos="fade-up" style="min-height: 730px;">
         <div class="row g-4">
             <!-- Contact Features -->
             <div class="col-md-6 col-lg-3">
@@ -19,7 +19,7 @@
                         <h5 class="card-title">Chat with us</h5>
                         <p class="card-text">Speak to our friendly team</p>
                         <a href="https://wa.me/6281265571198" target="_blank" class="btn btn-outline-success">
-                            +6281265571198
+                            whatsapp
                         </a>
                     </div>
                 </div>
@@ -27,16 +27,33 @@
             <div class="col-md-6 col-lg-3">
                 <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
-
+            
                         {{-- for icon --}}
                         <div class="iconBox mb-3 text-danger">
-                            <i class="far fa-envelope fs-2"></i>
+                            <i class="fab fa-instagram fs-2"></i>
                         </div>
-
-                        <h5 class="card-title">Email us your experience</h5>
-                        <p class="card-text">Email our friendly team</p>
-                        <a href="mailto:contact@example.com" target="_blank" class="btn btn-outline-danger">
-                            contact@example.com
+            
+                        <h5 class="card-title">Follow us on Instagram</h5>
+                        <p class="card-text">Check out our latest updates</p>
+                        <a href="https://instagram.com/mulai_dulu.id" target="_blank" class="btn btn-outline-danger">
+                            @mulai_dulu.id
+                        </a>
+                    </div>
+                </div>
+            </div>            
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+            
+                        {{-- for icon --}}
+                        <div class="iconBox mb-3 text-primary">
+                            <i class="fab fa-x-twitter fs-2"></i>
+                        </div>
+            
+                        <h5 class="card-title">Follow us on X</h5>
+                        <p class="card-text">Stay updated with our latest news</p>
+                        <a href="https://x.com/yourusername" target="_blank" class="btn btn-outline-primary">
+                            @yourusername
                         </a>
                     </div>
                 </div>
@@ -44,37 +61,21 @@
             <div class="col-md-6 col-lg-3">
                 <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
-
+            
                         {{-- for icon --}}
                         <div class="iconBox mb-3 text-danger">
-                            <i class="far fa-envelope fs-2"></i>
+                            <i class="fab fa-tiktok fs-2"></i>
                         </div>
-
-                        <h5 class="card-title">Email us your experience</h5>
-                        <p class="card-text">Email our friendly team</p>
-                        <a href="mailto:contact@example.com" target="_blank" class="btn btn-outline-danger">
-                            contact@example.com
+            
+                        <h5 class="card-title">Follow us on TikTok</h5>
+                        <p class="card-text">Check out our latest videos</p>
+                        <a href="https://tiktok.com/@yourusername" target="_blank" class="btn btn-outline-danger">
+                            @yourusername
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card shadow-sm h-100 text-center">
-                    <div class="card-body">
-
-                        {{-- for icon --}}
-                        <div class="iconBox mb-3 text-danger">
-                            <i class="far fa-envelope fs-2"></i>
-                        </div>
-
-                        <h5 class="card-title">Email us your experience</h5>
-                        <p class="card-text">Email our friendly team</p>
-                        <a href="mailto:contact@example.com" target="_blank" class="btn btn-outline-danger">
-                            contact@example.com
-                        </a>
-                    </div>
-                </div>
-            </div>
+            
             <!-- Add more contact features here -->
         </div>
 
@@ -84,34 +85,28 @@
                 [
                     'id' => 1,
                     'icon' => '<i class="fas fa-user-circle"></i>',
-                    'question' => 'How do I create an account?',
+                    'question' => 'How do I start with MulaiDulu?',
                     'answer' =>
-                        'You can create a free MAKANGAK account by downloading the app from the App Store or Google Play. Follow the prompts to sign up using your email or social media account.',
+                        'You can sign up on our platform to explore coaching options, workshops, and resources to kickstart your journey.',
                 ],
                 [
                     'id' => 2,
                     'icon' => '<i class="fas fa-thumbs-up"></i>',
-                    'question' => 'How does MAKANGAK personalize recommendations?',
+                    'question' => 'What services does MulaiDulu offer?',
                     'answer' =>
-                        'MAKANGAK uses your saved preferences, past searches, and reviews to create tailored recommendations.',
+                        'We offer business coaching, mentorship programs, and community workshops tailored to your needs.',
                 ],
                 [
                     'id' => 3,
-                    'icon' => '<i class="fas fa-mobile-alt"></i>',
-                    'question' => 'Is MAKANGAK available for both iOS and Android devices?',
-                    'answer' => 'Yes, MAKANGAK is available for download on both iOS and Android devices.',
+                    'icon' => '<i class="fas fa-shield-alt"></i>',
+                    'question' => 'Is my data secure with MulaiDulu?',
+                    'answer' => 'Yes, we prioritize your privacy and use state-of-the-art security measures to protect your data.',
                 ],
                 [
                     'id' => 4,
-                    'icon' => '<i class="fas fa-mobile-alt"></i>',
-                    'question' => 'Is MAKANGAK available for both iOS and Android devices?',
-                    'answer' => 'Yes, MAKANGAK is available for download on both iOS and Android devices.',
-                ],
-                [
-                    'id' => 5,
-                    'icon' => '<i class="fas fa-mobile-alt"></i>',
-                    'question' => 'Is MAKANGAK available for both iOS and Android devices?',
-                    'answer' => 'Yes, MAKANGAK is available for download on both iOS and Android devices.',
+                    'icon' => '<i class="fas fa-calendar-check"></i>',
+                    'question' => 'How do I schedule a coaching session?',
+                    'answer' => 'Simply log in to your account, select a coach, and book a session at your preferred time.',
                 ],
             ];
         @endphp
