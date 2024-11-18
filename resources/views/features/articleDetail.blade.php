@@ -3,13 +3,22 @@
 @section('title', 'Detail Page')
 
 @section('content')
-    <h1 class="mt-4 mb-4 mx-auto">Book Detail</h1>
-    <div class="container">
-        <!-- Filterable Images / Cards Section -->
-        <img src="{{ $article->image }}" alt="img">
-        <h6 class="mt-4 text-start">Title: {{ $article->judul }}</h6>
-        <p class="text-start">Author: {{ $article->penulis }}</p>
-        <p class="text-start">Year: {{ $article->post_date }}</p>
-        <p class="text-start">Synopsis: <br> {{ $article->isi_article }}</p>
+    <div class="container mt-5 pb-5">
+        <div class="row g-4 align-items-center">
+            <!-- Image Section -->
+            <div class="col-md-6 text-center">
+                <img src="{{ $article->image }}" alt="Image for {{ $article->judul }}" class="img-fluid rounded shadow">
+            </div>
+
+            <!-- Text Section -->
+            <div class="col-md-6">
+                <h1 class="mb-3">{{ $article->judul }}</h1>
+                <p class="text-muted">By <strong>{{ $article->penulis }}</strong></p>
+                <p><strong>Year:</strong> {{ $article->post_date }}</p>
+                <p><strong>Synopsis:</strong></p>
+                <p>{{ $article->isi_article }}</p>
+                <a href="{{ url('/home') }}" class="btn btn-primary mt-3">Back to Home</a>
+            </div>
+        </div>
     </div>
-@stop
+@endsection

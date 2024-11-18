@@ -9,11 +9,11 @@ class ExpertController extends Controller
 {
     public function showAllExpert(){
         $experts = Expert::all();
-        return view('expertpage')->with('expert', $experts);
+        return view('features.experts')->with('experts', $experts);
     }
 
     public function showDetailExpert(Request $request){
-        $expert = Article::find($request->id);
-        return view('detailexpert')->with('expert', $expert);
+        $expert = Expert::find($request->id);
+        return view('features.expertDetail')->with('expert', $expert);
     }
 }

@@ -16,7 +16,7 @@ class articleSeeder extends Seeder
     {
         for ($i = 1; $i <= 10; $i++) {
             Article::insert([
-                'judul' => fake()->text(50), // Limit to 50 characters for title
+                'judul' => fake()->text(10),
                 'penulis' => fake()->name(),
                 'isi_article' => fake()->paragraph(), // Use paragraph text
                 'post_date' => fake()->date(), // Use a valid date
