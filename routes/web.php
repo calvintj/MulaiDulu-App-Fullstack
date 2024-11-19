@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ExpertController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,3 +34,9 @@ Route::view('/aboutUs', 'features.aboutUs');
 Route::view('/ourWorks', 'features.ourWorks');
 Route::view('/mentorship', 'features.mentorship');
 Route::view('/contactUs', 'features.contactUs');
+
+Route::get('/', [CartController::class, 'index'])->name('courses.index');
+Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/cart/checkout', [CheckoutController::class, 'process'])->name('cart.checkout');
+
