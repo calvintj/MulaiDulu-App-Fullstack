@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(articleSeeder::class);
         $this->call(expertSeeder::class);
+        $this->call(reviewSeeder::class);
     }
 }
