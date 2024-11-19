@@ -25,28 +25,28 @@
                         @csrf
                         <!-- Name Field -->
                         <div class="mb-3">
-                            <input type="text" name="name" class="form-control form-control-lg bg-light fs-6" placeholder="Full Name" style="font-size: 16px;" value="{{ old('name') }}" required autofocus>
+                            <input type="text" name="name" class="form-control form-control-lg bg-light fs-6" placeholder="Full Name" value="{{ old('name') }}" required autofocus>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <!-- Email Field -->
                         <div class="mb-3">
-                            <input type="email" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email Address" style="font-size: 16px;" value="{{ old('email') }}" required>
+                            <input type="email" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email Address" value="{{ old('email') }}" required>
                             @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <!-- Password Field -->
-                        <div class="mb-1">
-                            <input type="password" name="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" style="font-size: 16px;" required>
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" required>
                             @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <!-- Confirm Password Field -->
-                        <div class="mb-1">
-                            <input type="password" name="password_confirmation" class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password" style="font-size: 16px;" required>
+                        <div class="mb-3">
+                            <input type="password" name="password_confirmation" class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password" required>
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Sign Up</button>
@@ -63,6 +63,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 @endsection
