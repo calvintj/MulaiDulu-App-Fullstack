@@ -14,23 +14,21 @@
 
 <body style="font-family: 'Poppins', sans-serif;">
 
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <!-- Logo -->
-            <a class="navbar-brand" href="/home" style="margin: 0;">
-                <img src="{{ asset('image/logo.png') }}" alt="" style="width: 100px; height: auto;">
+            <a class="navbar-brand" href="/home">
+                <img src="{{ asset('image/logo.png') }}" alt="Logo" style="width: 100px; height: auto;">
             </a>
 
             <!-- Toggler Button for Mobile View -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Navbar Content -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navigation Links -->
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="/home">Home</a>
@@ -52,26 +50,24 @@
                     </li>
                 </ul>
 
-                @if (Route::has('login') && Auth::check())
-                    <div class="top-right links">
-                        <!-- Authentication -->
+                <!-- Authentication Links -->
+                <div class="d-flex">
+                    @if (Route::has('login') && Auth::check())
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="btn btn-outline-light me-2" style="width: 100px;">
+                            <button type="submit" class="btn btn-outline-light me-2">
                                 {{ __('Log Out') }}
                             </button>
-                        </form>                        
-                    </div>
-                @elseif (Route::has('login') && !Auth::check())
-                    <div class="top-right links">
-                        <a class="btn btn-outline-light me-2" style="width: 100px;"
-                            href="{{ route('login') }}">Login</a>
-                        <a class="btn btn-light" style="width: 100px" href="{{ route('register') }}">Register</a>
-                    </div>
-                @endif
+                        </form>
+                    @elseif (Route::has('login') && !Auth::check())
+                        <a class="btn btn-outline-light me-2" href="{{ route('login') }}">Login</a>
+                        <a class="btn btn-light" href="{{ route('register') }}">Register</a>
+                    @endif
+                </div>
             </div>
         </div>
     </nav>
+
 
 
     @yield('content')

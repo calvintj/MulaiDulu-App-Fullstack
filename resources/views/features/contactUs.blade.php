@@ -50,7 +50,7 @@
                             <i class="fab fa-x-twitter fs-2"></i>
                         </div>
             
-                        <h5 class="card-title">Follow us on X</h5>
+                        <h5 class="card-title">Follow us on Facebook</h5>
                         <p class="card-text">Stay updated with our latest news</p>
                         <a href="https://x.com/yourusername" target="_blank" class="btn btn-outline-primary">
                             @yourusername
@@ -69,8 +69,8 @@
             
                         <h5 class="card-title">Follow us on TikTok</h5>
                         <p class="card-text">Check out our latest videos</p>
-                        <a href="https://tiktok.com/@yourusername" target="_blank" class="btn btn-outline-danger">
-                            @yourusername
+                        <a href="https://tiktok.com/@mulaidulu.id" target="_blank" class="btn btn-outline-dark">
+                            @mulaidulu.id
                         </a>
                     </div>
                 </div>

@@ -53,17 +53,19 @@
                         </div>
                     </form>
                     <div class="mb-3">
-                        <button class="btn btn-lg btn-light w-100 fs-6 d-flex align-items-center justify-content-center">
+                        <a href="{{ route('google-auth') }}"
+                            class="btn btn-lg btn-light w-100 fs-6 d-flex align-items-center justify-content-center">
                             <img src="{{ asset('image/google.png') }}" style="width: 20px;" class="me-2">
                             <small>Sign Up with Google</small>
-                        </button>
+                        </a>
                     </div>
+
                     <div>
                         <small>Already have an account? <a href="{{ route('login') }}">Log In</a></small>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 @endsection
