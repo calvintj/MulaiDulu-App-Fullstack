@@ -3,7 +3,11 @@
 @section('title', 'Expert Detail')
 
 @section('content')
+<<<<<<< HEAD
     <div class="container mt-5 pb-5 d-flex align-items-center" style="min-height: 680px;">
+=======
+    <div class="container my-5 pb-5">
+>>>>>>> 828aadeb6881abb6ada985b26a48e8b7cc82808d
         <div class="row g-4 align-items-center">
             <!-- Image Section -->
             <div class="col-md-6 text-center">

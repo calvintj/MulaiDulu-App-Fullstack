@@ -20,14 +20,14 @@
             <a class="navbar-brand" href="/home" style="margin: 0;">
                 <img src="{{ asset('image/logo.png') }}" alt="" style="width: 100px; height: auto;">
             </a>
-            
+
             <!-- Toggler Button for Mobile View -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <!-- Navbar Content -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navigation Links -->
@@ -51,17 +51,29 @@
                         <a class="nav-link" href="/profile">Profile</a>
                     </li>
                 </ul>
-    
-                <!-- Login and Register Buttons -->
-                <div class="d-flex">
-                    <a class="btn btn-outline-light me-2" style="width: 100px;" href="/login">Login</a>
-                    <a class="btn btn-light" style="width: 100px" href="/register">Register</a>
-                </div>
+
+                @if (Route::has('login') && Auth::check())
+                    <div class="top-right links">
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-light me-2" style="width: 100px;">
+                                {{ __('Log Out') }}
+                            </button>
+                        </form>                        
+                    </div>
+                @elseif (Route::has('login') && !Auth::check())
+                    <div class="top-right links">
+                        <a class="btn btn-outline-light me-2" style="width: 100px;"
+                            href="{{ route('login') }}">Login</a>
+                        <a class="btn btn-light" style="width: 100px" href="{{ route('register') }}">Register</a>
+                    </div>
+                @endif
             </div>
         </div>
     </nav>
-    
-    
+
+
     @yield('content')
 
     <footer class="bg-dark text-white text-center py-3">
