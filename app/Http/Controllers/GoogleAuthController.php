@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class GoogleAuthController extends Controller
 {
@@ -35,7 +36,7 @@ class GoogleAuthController extends Controller
 
             return redirect()->route('home');
         } catch (\Throwable $th) {
-            \Log::error('Google login error: ' . $th->getMessage(), [
+            Log::error('Google login error: ' . $th->getMessage(), [
                 'exception' => $th,
             ]);
             return redirect()->route('login')->with('error', 'Login failed. Please try again.');

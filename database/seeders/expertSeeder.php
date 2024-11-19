@@ -18,6 +18,7 @@ class expertSeeder extends Seeder
                 'name' => fake()->name(), // Limit to 50 characters for title
                 'expertise' => fake()->text(10),
                 'bio' => fake()->paragraph(), // Use paragraph text
+                'rate_price' => fake()->numberBetween(10000, 100000),
                 'rating' => fake()->randomFloat(1,4,5), // Use a valid date
                 'image' => fake()->imageUrl(),
             ]);

@@ -3,11 +3,7 @@
 @section('title', 'Expert Detail')
 
 @section('content')
-<<<<<<< HEAD
     <div class="container mt-5 pb-5 d-flex align-items-center" style="min-height: 680px;">
-=======
-    <div class="container my-5 pb-5">
->>>>>>> 828aadeb6881abb6ada985b26a48e8b7cc82808d
         <div class="row g-4 align-items-center">
             <!-- Image Section -->
             <div class="col-md-6 text-center">
@@ -22,6 +18,8 @@
                 <p><strong>Rating:</strong> {{ number_format($expert->rating, 1) }} / 5</p>
                 <p><strong>About:</strong></p>
                 <p>{{ $expert->bio }}</p>
+                <p>Rp.{{ $expert->rate_price }}</p>
+
                 <a href="{{ url('/experts') }}" class="btn btn-primary mt-3">
                     Back
                 </a>

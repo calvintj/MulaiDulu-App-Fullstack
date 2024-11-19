@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('expertise');
             $table->longtext('bio');
+            $table->decimal('rate_price', 10, 2);
             $table->float('rating');
             $table->string('image')->nullable;
             $table->timestamps();

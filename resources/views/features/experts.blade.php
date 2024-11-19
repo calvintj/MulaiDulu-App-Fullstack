@@ -22,6 +22,8 @@
                             <p class="card-text">
                                 <strong>Bio:</strong> {{ Str::limit($expert->bio, 100, '...') }}
                             </p>
+                            <p class="card-text text-success fw-bold">${{ $expert->rate_price }}</p>
+
                             <a href="{{ url('expertDetail/' . $expert->id) }}" class="btn btn-primary mt-3">
                                 View Details
                             </a>
