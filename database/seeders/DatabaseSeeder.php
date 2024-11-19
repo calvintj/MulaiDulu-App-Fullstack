@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(articleSeeder::class);
         $this->call(expertSeeder::class);
         $this->call(reviewSeeder::class);
+        $this->call(courseSeeder::class);
     }
 }

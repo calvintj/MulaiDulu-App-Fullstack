@@ -2,26 +2,20 @@
 
 @section('title', 'Our Works')
 
-<h1 class="text-center mt-4 mb-4">Your Daily Business Articles</h1>
-<div class="container">
-    <ul class="list-group">
-        @foreach ($articles as $article)
-            <li class="list-group-item d-flex align-items-start">
-                <img src="{{ $article->image }}" alt="Image for {{ $article->judul }}" class="img-thumbnail me-3"
-                    style="width: 100px; height: auto;">
-                <div>
-                    <h5 class="mb-1">{{ $article->judul }}</h5>
-                    <p class="mb-1 text-muted">By {{ $article->penulis }}</p>
-                    <a href="{{ url('articleDetail/' . $article->id) }}" class="btn btn-sm btn-primary mt-1">
-                        View Details
-                    </a>
-                </div>
-            </li>
-        @endforeach
-    </ul>
-</div>
-
-
 @section('content')
-
+        <h1 class="text-center mt-4 mb-4">Customers Reviews</h1>
+        <div class="container">
+            <ul class="list-group">
+                @foreach ($reviews as $review)
+                    <li class="list-group-item d-flex align-items-start shadow-sm mb-3 p-3">
+                        <img src="{{ $review->image }}" alt="Image for {{ $review->name }}" class="rounded-circle me-3"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h5 class="mb-1">{{ $review->name }}</h5>
+                            <p class="mb-1 text-muted fst-italic">"{{ $review->review }}"</p>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
 @endsection

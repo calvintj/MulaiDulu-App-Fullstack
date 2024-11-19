@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ExpertController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\GoogleAuthController;
 
 // Route::get('/dashboard', function () {
@@ -30,9 +33,14 @@ Route::get('/articleDetail/{id}', [ArticleController::class, 'showDetailArticle'
 Route::get('/experts', [ExpertController::class, 'showAllExpert']);
 Route::get('/expertDetail/{id}', [ExpertController::class, 'showDetailExpert']);
 Route::view('/aboutUs', 'features.aboutUs');
-Route::view('/ourWorks', 'features.ourWorks');
+Route::get('/ourWorks', [ReviewController::class, 'showAllReview']);
 Route::view('/mentorship', 'features.mentorship');
 Route::view('/contactUs', 'features.contactUs');
+
+// Route::get('/', [CartController::class, 'index'])->name('courses.index');
+Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/cart/checkout', [CheckoutController::class, 'process'])->name('cart.checkout');
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
