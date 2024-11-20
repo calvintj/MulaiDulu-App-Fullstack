@@ -17,7 +17,7 @@ class courseSeeder extends Seeder
             Course::insert([
                 'name' => fake()->name(), // Limit to 50 characters for title
                 'description' => fake()->text(10),
-            
+                'image' => fake()->imageUrl(),
                 'price' => fake()->numberBetween(10000, 100000),
             ]);
         }

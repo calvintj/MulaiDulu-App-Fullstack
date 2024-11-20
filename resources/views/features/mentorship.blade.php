@@ -31,6 +31,8 @@
                     @foreach ($courses as $course)
                         <div class="col">
                             <div class="card h-100 shadow-sm">
+                                <img src="{{ $course->image }}" class="card-img-top" alt="{{ $course->name }}"
+                                    style="object-fit: cover; height: 200px;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $course->name }}</h5>
                                     <p class="card-text">{{ Str::limit($course->description, 100, '...') }}</p>
@@ -55,7 +57,8 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="courseModalLabel{{ $course->id }}">{{ $course->name }}
+                                        <h5 class="modal-title" id="courseModalLabel{{ $course->id }}">
+                                            {{ $course->name }}
                                         </h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>

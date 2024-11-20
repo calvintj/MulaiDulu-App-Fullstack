@@ -36,18 +36,19 @@ Route::get('/experts', [ExpertController::class, 'showAllExpert']);
 Route::get('/expertDetail/{id}', [ExpertController::class, 'showDetailExpert']);
 Route::view('/aboutUs', 'features.aboutUs');
 Route::get('/ourWorks', [ReviewController::class, 'showAllReview']);
-Route::view('/mentorship', 'features.mentorship'); //gk perlu
 Route::view('/contactUs', 'features.contactUs');
 
-// Web Routes
+// Cart
+
 Route::get('/mentorship', [CartController::class, 'index'])->name('mentorship.index');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/cart/{id}/increase', [CartController::class, 'increaseQuantity'])->name('cart.increase');
+Route::post('/cart/{id}/decrease', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
+Route::delete('/cart/{id}/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
 Route::post('/cart/add/{course}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/add/expert/{expert}', [CartController::class, 'addExpertToCart'])->name('cart.add.expert');
-
-Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
-Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-Route::post('/cart/checkout', [CheckoutController::class, 'process'])->name('cart.checkout');
-
+Route::post('/cart/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);

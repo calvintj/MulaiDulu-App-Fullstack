@@ -27,6 +27,7 @@ class CartController extends Controller
                 'name' => $course->name,
                 'price' => $course->price,
                 'quantity' => 1,
+                'image' => $course->image,
             ];
         }
 
@@ -45,6 +46,7 @@ class CartController extends Controller
                 'name' => $expert->name,
                 'price' => $expert->rate_price,
                 'quantity' => 1,
+                'image' => $expert->image,
             ];
     }
 
@@ -57,6 +59,37 @@ class CartController extends Controller
     {
         $cart = session()->get('cart', []);
         return view('features.cart', compact('cart'));
+    }
+
+    public function increaseQuantity($id)
+    {
+        $cart = session('cart', []);
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+            session()->put('cart', $cart);
+        }
+        return redirect()->route('cart.view');
+    }
+
+    public function decreaseQuantity($id)
+    {
+        $cart = session('cart', []);
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']--;
+            if ($cart[$id]['quantity'] <= 0) {
+                unset($cart[$id]);
+            }
+            session()->put('cart', $cart);
+        }
+        return redirect()->route('cart.view');
+    }
+
+
+
+    public function clearCart()
+    {
+        session()->forget('cart');
+        return redirect()->route('cart.view')->with('success', 'Cart has been cleared!');
     }
 
     public function removeFromCart($id)
