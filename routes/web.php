@@ -30,7 +30,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [ArticleController::class, 'showHomePage'])->name('home');;
 Route::get('/home', [ArticleController::class, 'showHomePage'])->name('home');
-Route::get('/articles', [ArticleController::class, 'showAllArticle']);
+// Route::get('/articles', [ArticleController::class, 'showAllArticle']);
 Route::get('/articleDetail/{id}', [ArticleController::class, 'showDetailArticle']);
 Route::get('/experts', [ExpertController::class, 'showAllExpert']);
 Route::get('/expertDetail/{id}', [ExpertController::class, 'showDetailExpert']);
@@ -52,3 +52,12 @@ Route::post('/cart/checkout', [CheckoutController::class, 'process'])->name('che
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
+
+//CRUD
+Route::prefix('Admin')->name('Admin.')->group(function () {
+    Route::resource('articlesCRUD', ArticleController::class);
+});
+
+Route::prefix('Admin')->name('Admin.')->group(function () {
+    Route::resource('expertsCRUD', ExpertController::class);
+});
