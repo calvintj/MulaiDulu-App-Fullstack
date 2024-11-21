@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Expert;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -94,7 +95,7 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
         if ($article->image) {
-            \Storage::delete('public/' . $article->image);
+            Storage::delete('public/' . $article->image);
         }
         $article->delete();
         return redirect()->route('Admin.articlesCRUD.index')->with('success', 'Article deleted successfully.');
