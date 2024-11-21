@@ -90,17 +90,6 @@
                 </div>
                 <!-- Summary -->
                 <div class="col-lg-3">
-                    {{-- <div class="card mb-3 border shadow-0">
-                        <div class="card-body">
-                            <form>
-                                <label class="form-label">Have a coupon?</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Coupon code" />
-                                    <button class="btn btn-light border">Apply</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div> --}}
                     <div class="card shadow-0 border">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
@@ -109,9 +98,10 @@
                                     ${{ array_sum(array_map(fn($item) => $item['quantity'] * $item['price'], $cart ?? [])) }}
                                 </p>
                             </div>
-                            <form action="{{ route('checkout.process') }}" method="POST">
+                            <form id="checkoutForm">
                                 @csrf
-                                <button type="submit" class="btn btn-success w-100 mb-2">Checkout</button>
+                                <button type="button" id="checkoutButton"
+                                    class="btn btn-success w-100 mb-2">Checkout</button>
                             </form>
                             <a href="{{ route('mentorship.index') }}" class="btn btn-light w-100 border">Back to Shop</a>
                         </div>
@@ -120,4 +110,56 @@
             </div>
         </div>
     </section>
+
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.clientKey') }}">
+    </script>
+    <script>
+        document.getElementById('checkoutButton').addEventListener('click', function() {
+            const csrfToken = document.querySelector('input[name="_token"]')?.value;
+
+            if (!csrfToken) {
+                alert('CSRF token missing. Please reload the page.');
+                return;
+            }
+
+            fetch('{{ route('checkout.process') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({}),
+                })
+                .then((response) => {
+                    if (!response.ok) {
+                        return response.json().then((data) => {
+                            throw new Error(data.error || 'Failed to process the request');
+                        });
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    if (data.snapToken) {
+                        snap.pay(data.snapToken, {
+                            onSuccess: function(result) {
+                                alert('Payment successful!');
+                                window.location.href = "{{ route('mentorship.index') }}";
+                            },
+                            onPending: function(result) {
+                                alert('Payment is pending!');
+                            },
+                            onError: function(result) {
+                                alert('Payment failed!');
+                            },
+                        });
+                    } else {
+                        alert('Snap token not found!');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error.message);
+                    alert(error.message);
+                });
+        });
+    </script>
 @endsection

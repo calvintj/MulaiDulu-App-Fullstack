@@ -70,14 +70,40 @@ class CheckoutController extends Controller
                 }
             }
 
+            // Set your Merchant Server Key
+            \Midtrans\Config::$serverKey = config('midtrans.serverKey');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
 
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => 'ORDER-' . $order->id,
+                    'gross_amount' => $total,
+                ),
+                'customer_details' => [
+                    'first_name' => Auth::user()->name,
+                    'email' => Auth::user()->email,
+                    'phone' => Auth::user()->phone ?? '0000000000', // Default if phone is missing
+                ],
+            );
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
 
             // Clear the cart session
             session()->forget('cart');
 
             DB::commit();
 
-            return redirect()->route('mentorship.index')->with('success', 'Order successfully placed!');
+            // return redirect()->route('mentorship.index')->with([
+            //     'success' => 'Order successfully placed!',
+            //     'snapToken' => $snapToken,
+            // ]);
+
+            return response()->json(['snapToken' => $snapToken], 200);
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Checkout error: ' . $e->getMessage());
