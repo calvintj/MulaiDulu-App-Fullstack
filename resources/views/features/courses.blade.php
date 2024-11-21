@@ -33,7 +33,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $course->name }}</h5>
                                     <p class="card-text">{{ Str::limit($course->description, 100, '...') }}</p>
-                                    <p class="card-text text-success fw-bold">${{ $course->price }}</p>
+                                    <p class="card-text text-success fw-bold">Rp {{ $course->price }}</p>
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#courseModal{{ $course->id }}">
