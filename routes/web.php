@@ -4,16 +4,13 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ExpertController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,7 +27,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [ArticleController::class, 'showHomePage'])->name('home');;
 Route::get('/home', [ArticleController::class, 'showHomePage'])->name('home');
-// Route::get('/articles', [ArticleController::class, 'showAllArticle']);
+Route::get('/articles', [ArticleController::class, 'showAllArticle']);
 Route::get('/articleDetail/{id}', [ArticleController::class, 'showDetailArticle']);
 Route::get('/experts', [ExpertController::class, 'showAllExpert']);
 Route::get('/expertDetail/{id}', [ExpertController::class, 'showDetailExpert']);
@@ -61,3 +58,8 @@ Route::prefix('Admin')->name('Admin.')->group(function () {
 Route::prefix('Admin')->name('Admin.')->group(function () {
     Route::resource('expertsCRUD', ExpertController::class);
 });
+
+Route::prefix('Admin')->name('Admin.')->group(function () {
+    Route::resource('coursesCRUD', CourseController::class);
+});
+

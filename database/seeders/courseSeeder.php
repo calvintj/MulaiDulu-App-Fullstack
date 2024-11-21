@@ -13,7 +13,7 @@ class courseSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 6; $i++) {
             Course::insert([
                 'name' => fake()->name(), // Limit to 50 characters for title
                 'description' => fake()->text(10),

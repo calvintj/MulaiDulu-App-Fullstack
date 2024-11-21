@@ -7,7 +7,7 @@
         <div class="row g-4 align-items-center">
             <!-- Image Section -->
             <div class="col-md-6 text-center">
-                <img src="{{ $article->image }}" alt="Image for {{ $article->judul }}" class="img-fluid rounded shadow">
+                <img src="{{ asset('storage/' . $article->image) }}" alt="Image for {{ $article->judul }}" class="img-fluid rounded shadow">
             </div>
 
             <!-- Text Section -->

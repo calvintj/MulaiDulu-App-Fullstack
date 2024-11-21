@@ -31,12 +31,12 @@
                     @foreach ($courses as $course)
                         <div class="col">
                             <div class="card h-100 shadow-sm">
-                                <img src="{{ $course->image }}" class="card-img-top" alt="{{ $course->name }}"
+                                <img src="{{ asset('storage/' . $course->image) }}" class="card-img-top" alt="{{ $course->name }}"
                                     style="object-fit: cover; height: 200px;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $course->name }}</h5>
                                     <p class="card-text">{{ Str::limit($course->description, 100, '...') }}</p>
-                                    <p class="card-text text-success fw-bold">${{ $course->price }}</p>
+                                    <p class="card-text text-success fw-bold">Rp {{ $course->price }}</p>
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#courseModal{{ $course->id }}">
@@ -83,7 +83,7 @@
                     @foreach ($experts as $expert)
                         <div class="col">
                             <div class="card h-100 shadow-sm">
-                                <img src="{{ $expert->image }}" class="card-img-top" alt="{{ $expert->name }}"
+                                <img src="{{ asset('storage/' . $expert->image) }}" class="card-img-top" alt="{{ $expert->name }}"
                                     style="object-fit: cover; height: 200px;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $expert->name }}</h5>
@@ -93,7 +93,7 @@
                                     <p class="card-text">
                                         <strong>Bio:</strong> {{ Str::limit($expert->bio, 100, '...') }}
                                     </p>
-                                    <p class="card-text text-success fw-bold">${{ $expert->rate_price }}</p>
+                                    <p class="card-text text-success fw-bold">Rp {{ $expert->rate_price }}</p>
 
                                     <div class="d-flex justify-content-between">
                                         <a href="{{ url('expertDetail/' . $expert->id) }}"
