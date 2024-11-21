@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->longtext('bio');
             $table->decimal('rate_price', 10, 2);
             $table->float('rating');
-            $table->string('image')->nullable;
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

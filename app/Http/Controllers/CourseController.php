@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -73,7 +74,7 @@ class CourseController extends Controller
     {
         $course = Course::findOrFail($id);
         if ($course->image) {
-            \Storage::delete('public/' . $course->image);
+            Storage::delete('public/' . $course->image);
         }
         $course->delete();
 
