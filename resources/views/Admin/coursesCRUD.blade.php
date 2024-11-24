@@ -61,6 +61,7 @@
                     @method('PUT')
                 @endif
 
+
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" name="name" id="name" class="form-control"

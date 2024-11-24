@@ -9,7 +9,9 @@
             @foreach ($articles as $article)
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <img src="{{ $article->image }}" class="card-img-top" alt="Image for {{ $article->title }}">
+                        <img src="{{ asset('storage/' . $article->image) }}" class="card-img-top"
+                            alt="Image for {{ $article->title }}" style="height: 200px; object-fit: cover;">
+
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->title }}</h5>
                             <p class="card-text text-muted">By {{ $article->author }}</p>
