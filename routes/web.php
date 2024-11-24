@@ -51,15 +51,15 @@ Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('goog
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
 
 //CRUD
-Route::prefix('Admin')->name('Admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('articlesCRUD', ArticleController::class);
 });
 
-Route::prefix('Admin')->name('Admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('expertsCRUD', ExpertController::class);
 });
 
-Route::prefix('Admin')->name('Admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('coursesCRUD', CourseController::class);
 });
 

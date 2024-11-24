@@ -32,12 +32,12 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('Admin.articlesCRUD', compact('articles'));
+        return view('admin.articlesCRUD', compact('articles'));
     }
 
     public function create()
     {
-        return view('Admin.articlesCRUD');
+        return view('admin.articlesCRUD');
     }
 
     public function store(Request $request)
@@ -56,19 +56,19 @@ class ArticleController extends Controller
         }
 
         Article::create($data);
-        return redirect()->route('Admin.articlesCRUD.index')->with('success', 'Article created successfully.');
+        return redirect()->route('admin.articlesCRUD.index')->with('success', 'Article created successfully.');
     }
 
     public function show($id)
     {
         $view = Article::findOrFail($id);
-        return view('Admin.articlesCRUD', compact('view'));
+        return view('admin.articlesCRUD', compact('view'));
     }
 
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        return view('Admin.articlesCRUD', compact('article'));
+        return view('admin.articlesCRUD', compact('article'));
     }
 
     public function update(Request $request, $id)
@@ -88,7 +88,7 @@ class ArticleController extends Controller
         }
 
         $article->update($data);
-        return redirect()->route('Admin.articlesCRUD.index')->with('success', 'Article updated successfully.');
+        return redirect()->route('admin.articlesCRUD.index')->with('success', 'Article updated successfully.');
     }
 
     public function destroy($id)
@@ -98,6 +98,6 @@ class ArticleController extends Controller
             Storage::delete('public/' . $article->image);
         }
         $article->delete();
-        return redirect()->route('Admin.articlesCRUD.index')->with('success', 'Article deleted successfully.');
+        return redirect()->route('admin.articlesCRUD.index')->with('success', 'Article deleted successfully.');
     }
 }

@@ -19,15 +19,15 @@
         <div class="row align-items-center">
             <!-- Text Section -->
             <div class="col-md-6">
-                <h1 class="mb-3">{{ $articles[0]->judul }}</h1>
-                <p class="text-muted">By {{ $articles[0]->penulis }}</p>
+                <h1 class="mb-3">{{ $articles[0]->title }}</h1>
+                <p class="text-muted">By {{ $articles[0]->author }}</p>
                 <p>{{ Str::limit($articles[0]->isi_article, 200) }} {{-- Limit to 200 characters for summary --}}</p>
                 <a href="{{ url('articles') }}" class="btn btn-primary">More Articles</a>
             </div>
 
             <!-- Image Section -->
             <div class="col-md-6 text-center">
-                <img src="{{ asset('storage/' . $articles[0]->image) }}" alt="Image for {{ $articles[0]->judul }}" class="img-fluid rounded">
+                <img src="{{ asset('storage/' . $articles[0]->image) }}" alt="Image for {{ $articles[0]->title }}" class="img-fluid rounded">
             </div>
         </div>
     </div>
