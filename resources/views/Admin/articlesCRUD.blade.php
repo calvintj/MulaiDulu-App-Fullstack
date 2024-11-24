@@ -33,9 +33,9 @@
                                 <td>{{ $art->penulis }}</td>
                                 <td>{{ $art->post_date }}</td>
                                 <td>
-                                    <a href="{{ route('Admin.articlesCRUD.show', $art->id) }}" class="btn btn-info btn-sm">View</a>
-                                    <a href="{{ route('Admin.articlesCRUD.edit', $art->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('Admin.articlesCRUD.destroy', $art->id) }}" method="POST" style="display:inline-block;">
+                                    <a href="{{ route('admin.articlesCRUD.show', $art->id) }}" class="btn btn-info btn-sm">View</a>
+                                    <a href="{{ route('admin.articlesCRUD.edit', $art->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <form action="{{ route('admin.articlesCRUD.destroy', $art->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -52,7 +52,7 @@
 
         {{-- Create/Edit Article --}}
         @if(isset($article) || !isset($view))
-            <form action="{{ isset($article) ? route('Admin.articlesCRUD.update', $article->id) : route('Admin.articlesCRUD.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ isset($article) ? route('admin.articlesCRUD.update', $article->id) : route('admin.articlesCRUD.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @if(isset($article)) @method('PUT') @endif
 
@@ -95,7 +95,7 @@
                     <input type="file" name="image" id="image" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-success">{{ isset($article) ? 'Update' : 'Submit' }}</button>
-                <a href="{{ route('Admin.articlesCRUD.index') }}" class="btn btn-secondary">Cancel</a>
+                <a href="{{ route('admin.articlesCRUD.index') }}" class="btn btn-secondary">Cancel</a>
             </form>
         @endif
 
@@ -110,7 +110,7 @@
                     @if ($view->image)
                         <img src="{{ asset('storage/' . $view->image) }}" alt="Article Image" class="img-fluid">
                     @endif
-                    <a href="{{ route('Admin.articlesCRUD.index') }}" class="btn btn-secondary mt-3">Back</a>
+                    <a href="{{ route('admin.articlesCRUD.index') }}" class="btn btn-secondary mt-3">Back</a>
                 </div>
             </div>
         @endif

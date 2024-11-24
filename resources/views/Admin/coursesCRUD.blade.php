@@ -31,11 +31,11 @@
                                 <td>{{ $c->name }}</td>
                                 <td>${{ number_format($c->price, 2) }}</td>
                                 <td>
-                                    <a href="{{ route('Admin.coursesCRUD.show', $c->id) }}"
+                                    <a href="{{ route('admin.coursesCRUD.show', $c->id) }}"
                                         class="btn btn-info btn-sm">View</a>
-                                    <a href="{{ route('Admin.coursesCRUD.edit', $c->id) }}"
+                                    <a href="{{ route('admin.coursesCRUD.edit', $c->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('Admin.coursesCRUD.destroy', $c->id) }}" method="POST"
+                                    <form action="{{ route('admin.coursesCRUD.destroy', $c->id) }}" method="POST"
                                         style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
@@ -54,7 +54,7 @@
         {{-- Create/Edit Course --}}
         @if (isset($course) || !empty($courses))
             <form
-                action="{{ isset($course) ? route('Admin.coursesCRUD.update', $course->id) : route('Admin.coursesCRUD.store') }}"
+                action="{{ isset($course) ? route('admin.coursesCRUD.update', $course->id) : route('admin.coursesCRUD.store') }}"
                 method="POST" enctype="multipart/form-data">
                 @csrf
                 @if (isset($course))
@@ -83,7 +83,7 @@
                     <input type="file" name="image" id="image" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-success">{{ isset($course) ? 'Update' : 'Submit' }}</button>
-                <a href="{{ route('Admin.coursesCRUD.index') }}" class="btn btn-secondary">Cancel</a>
+                <a href="{{ route('admin.coursesCRUD.index') }}" class="btn btn-secondary">Cancel</a>
             </form>
         @endif
     </div>

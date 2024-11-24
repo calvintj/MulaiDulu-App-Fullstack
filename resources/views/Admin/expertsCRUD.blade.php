@@ -35,11 +35,11 @@
                                 <td>Rp {{ number_format($exp->rate_price, 2) }}</td>
                                 <td>{{ $exp->rating }}</td>
                                 <td>
-                                    <a href="{{ route('Admin.expertsCRUD.show', $exp->id) }}"
+                                    <a href="{{ route('admin.expertsCRUD.show', $exp->id) }}"
                                         class="btn btn-info btn-sm">View</a>
-                                    <a href="{{ route('Admin.expertsCRUD.edit', $exp->id) }}"
+                                    <a href="{{ route('admin.expertsCRUD.edit', $exp->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('Admin.expertsCRUD.destroy', $exp->id) }}" method="POST"
+                                    <form action="{{ route('admin.expertsCRUD.destroy', $exp->id) }}" method="POST"
                                         style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
@@ -58,7 +58,7 @@
         {{-- Create/Edit Expert --}}
         @if (isset($expert) || !empty($experts))
             <form
-                action="{{ isset($expert) ? route('Admin.expertsCRUD.update', $expert->id) : route('Admin.expertsCRUD.store') }}"
+                action="{{ isset($expert) ? route('admin.expertsCRUD.update', $expert->id) : route('admin.expertsCRUD.store') }}"
                 method="POST" enctype="multipart/form-data">
                 @csrf
                 @if (isset($expert))
@@ -97,7 +97,7 @@
                     <input type="file" name="image" id="image" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-success">{{ isset($expert) ? 'Update' : 'Submit' }}</button>
-                <a href="{{ route('Admin.expertsCRUD.index') }}" class="btn btn-secondary">Cancel</a>
+                <a href="{{ route('admin.expertsCRUD.index') }}" class="btn btn-secondary">Cancel</a>
             </form>
         @endif
     </div>
