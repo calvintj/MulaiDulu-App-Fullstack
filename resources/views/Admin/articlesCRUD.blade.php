@@ -19,8 +19,8 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Judul</th>
-                            <th>Penulis</th>
+                            <th>Title</th>
+                            <th>Author</th>
                             <th>Post Date</th>
                             <th>Actions</th>
                         </tr>
@@ -68,18 +68,18 @@
                 @endif
 
                 <div class="mb-3">
-                    <label for="judul" class="form-label">Judul</label>
+                    <label for="judul" class="form-label">Title</label>
                     <input type="text" name="judul" id="judul" class="form-control"
-                           value="{{ old('judul', $article->judul ?? '') }}" required>
+                           value="{{ old('judul', $article->title ?? '') }}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="penulis" class="form-label">Penulis</label>
+                    <label for="penulis" class="form-label">Author</label>
                     <input type="text" name="penulis" id="penulis" class="form-control"
-                           value="{{ old('penulis', $article->penulis ?? '') }}" required>
+                           value="{{ old('penulis', $article->author ?? '') }}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="isi_article" class="form-label">Isi Article</label>
-                    <textarea name="isi_article" id="isi_article" class="form-control" required>{{ old('isi_article', $article->isi_article ?? '') }}</textarea>
+                    <label for="isi_article" class="form-label">Content</label>
+                    <textarea name="isi_article" id="isi_article" class="form-control" required>{{ old('isi_article', $article->content ?? '') }}</textarea>
                 </div>
                 <div class="mb-3">
                     <label for="post_date" class="form-label">Post Date</label>
@@ -103,9 +103,9 @@
         @if(isset($view))
             <div class="card mt-3">
                 <div class="card-body">
-                    <h2>{{ $view->judul }}</h2>
-                    <p><strong>Penulis:</strong> {{ $view->penulis }}</p>
-                    <p><strong>Isi Article:</strong> {{ $view->isi_article }}</p>
+                    <h2>{{ $view->title }}</h2>
+                    <p><strong>Author:</strong> {{ $view->author }}</p>
+                    <p><strong>Content:</strong> {{ $view->content }}</p>
                     <p><strong>Post Date:</strong> {{ $view->post_date }}</p>
                     @if ($view->image)
                         <img src="{{ asset('storage/' . $view->image) }}" alt="Article Image" class="img-fluid">
