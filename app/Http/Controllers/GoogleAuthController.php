@@ -27,11 +27,18 @@ class GoogleAuthController extends Controller
                     'name' => $google_user->getName(),
                     'email' => $google_user->getEmail(),
                     'google_id' => $google_user->getId(),
+                    'role' => 'user',
                 ]);
-
                 Auth::login($new_user);
             } else {
+                if (!$user->google_id) {
+                    $user->update(['google_id' => $google_user->getId()]);
+                }
                 Auth::login($user);
+            }
+
+            if (Auth::user()->role === 'admin') {
+                return redirect('/admin/articlesCRUD');
             }
 
             return redirect()->route('home');

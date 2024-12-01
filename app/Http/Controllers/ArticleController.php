@@ -43,9 +43,9 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required|string|max:255',
-            'penulis' => 'required|string|max:255',
-            'isi_article' => 'required',
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'content' => 'required',
             'post_date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -74,9 +74,9 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'judul' => 'required|string|max:255',
-            'penulis' => 'required|string|max:255',
-            'isi_article' => 'required',
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'content' => 'required',
             'post_date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);

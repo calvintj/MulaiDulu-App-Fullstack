@@ -36,7 +36,6 @@ Route::get('/ourWorks', [ReviewController::class, 'showAllReview']);
 Route::view('/contactUs', 'features.contactUs');
 
 // Cart
-
 Route::get('/mentorship', [CartController::class, 'index'])->name('mentorship.index');
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
 Route::post('/cart/{id}/increase', [CartController::class, 'increaseQuantity'])->name('cart.increase');
@@ -53,13 +52,8 @@ Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogl
 //CRUD
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('articlesCRUD', ArticleController::class);
-});
-
-Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('expertsCRUD', ExpertController::class);
-});
-
-Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('coursesCRUD', CourseController::class);
 });
+
 
