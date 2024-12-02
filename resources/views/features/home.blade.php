@@ -7,30 +7,39 @@
     <!-- Image with Text Overlay Section -->
     <div class="container-fluid position-relative text-center text-white" style="padding: 0;">
         <img src="{{ asset('image/home.jpg') }}" alt="Background Image" class="img-fluid w-100"
-     style="width: 100%; height: 400px; object-fit: cover;">
+            style="width: 100%; height: 400px; object-fit: cover;">
         <div class="position-absolute top-50 start-50 translate-middle w-75">
             <h1 class="fw-bold">Empowering Your Business Journey</h1>
-            <p class="fs-5">We are here to support your growth with expert advice, industry insights, and a dedicated team. Let’s achieve greatness together.</p>
+            <p class="fs-5">We are here to support your growth with expert advice, industry insights, and a dedicated team.
+                Let’s achieve greatness together.</p>
             <a href="/aboutUs" class="btn btn-light btn-lg">Learn More</a>
         </div>
     </div>
 
     <div class="container mt-5">
         <div class="row align-items-center">
-            <!-- Text Section -->
-            <div class="col-md-6">
-                <h1 class="mb-3">{{ $articles[0]->title }}</h1>
-                <p class="text-muted">By {{ $articles[0]->author }}</p>
-                <p>{{ Str::limit($articles[0]->isi_article, 200) }} {{-- Limit to 200 characters for summary --}}</p>
-                <a href="{{ url('articles') }}" class="btn btn-primary">More Articles</a>
-            </div>
+            @if ($articles->isEmpty())
+                <!-- No Articles Available Section -->
+                <div class="col-md-12 text-center">
+                    <h1 class="mb-3">No Articles Available</h1>
+                    <p class="text-muted">Check back later for the latest articles.</p>
+                </div>
+            @else
+                <!-- Text Section -->
+                <div class="col-md-6">
+                    <h1 class="mb-3">{{ $articles[0]->title }}</h1>
+                    <p class="text-muted">By {{ $articles[0]->author }}</p>
+                    <p>{{ Str::limit($articles[0]->isi_article, 200) }} {{-- Limit to 200 characters for summary --}}</p>
+                    <a href="{{ url('articles') }}" class="btn btn-primary">More Articles</a>
+                </div>
 
-            <!-- Image Section -->
-            <div class="col-md-6 text-center">
-                <img src="{{ asset('storage/' . $articles[0]->image) }}" alt="Image for {{ $articles[0]->title }}"
-     class="img-fluid rounded" style="width: 300px; height: 200px; object-fit: cover;">
+                <!-- Image Section -->
+                <div class="col-md-6 text-center">
+                    <img src="{{ asset('storage/' . $articles[0]->image) }}" alt="Image for {{ $articles[0]->title }}"
+                        class="img-fluid rounded" style="width: 300px; height: 200px; object-fit: cover;">
+                </div>
+            @endif
 
-            </div>
         </div>
     </div>
 
@@ -43,16 +52,16 @@
                         <div id="expertCarousel" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel"
                             style="height: 500px;">
                             {{-- Indicators --}}
-                            <div class="carousel-indicators">
-                                @forelse($experts as $key => $expert)
-                                    <button type="button" data-bs-target="#expertCarousel"
-                                        data-bs-slide-to="{{ $key }}"
-                                        @if ($loop->first) class="active" aria-current="true" @endif
-                                        aria-label="Slide {{ $key + 1 }}"></button>
-                                @empty
-                                    <p class="text-center">No experts found</p>
-                                @endforelse
-                            </div>
+                            @if ($experts->isNotEmpty())
+                                <div class="carousel-indicators">
+                                    @foreach($experts as $key => $expert)
+                                        <button type="button" data-bs-target="#expertCarousel"
+                                            data-bs-slide-to="{{ $key }}"
+                                            @if ($loop->first) class="active" aria-current="true" @endif
+                                            aria-label="Slide {{ $key + 1 }}"></button>
+                                    @endforeach
+                                </div>
+                            @endif
 
                             {{-- Carousel Items --}}
                             <div class="carousel-inner rounded h-100">
@@ -101,15 +110,23 @@
                 </div>
             </div>
 
-            <!-- Text Section -->
-            <div class="col-md-6">
-                <h1 class="mb-3">{{ $experts[0]->name }}</h1>
-                <p class="text-muted">By {{ $experts[0]->expertise }}</p>
-                <p>{{ Str::limit($experts[0]->bio, 200) }} {{-- Limit to 200 characters for summary --}}</p>
-                <a href="{{ url('experts') }}" class="btn btn-primary">More Experts</a>
-            </div>
+            {{-- Text Section --}}
+            @if ($experts->isNotEmpty())
+                <div class="col-md-6">
+                    <h1 class="mb-3">{{ $experts[0]->name }}</h1>
+                    <p class="text-muted">By {{ $experts[0]->expertise }}</p>
+                    <p>{{ Str::limit($experts[0]->bio, 200) }}</p>
+                    <a href="{{ url('experts') }}" class="btn btn-primary">More Experts</a>
+                </div>
+            @else
+                <div class="col-md-6 text-center">
+                    <h1 class="mb-3">No Experts Available</h1>
+                    <p class="text-muted">Please check back later for updates on our experts.</p>
+                </div>
+            @endif
         </div>
     </div>
+
 
     <style>
         .carousel-item::after {
