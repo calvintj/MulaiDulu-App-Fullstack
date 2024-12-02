@@ -12,6 +12,7 @@ use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
+// Account
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -25,6 +26,7 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 require __DIR__.'/auth.php';
 
+// Features Routes
 Route::get('/', [ArticleController::class, 'showHomePage'])->name('home');;
 Route::get('/home', [ArticleController::class, 'showHomePage'])->name('home');
 Route::get('/articles', [ArticleController::class, 'showAllArticle']);
@@ -46,10 +48,11 @@ Route::post('/cart/add/{course}', [CartController::class, 'addToCart'])->name('c
 Route::post('/cart/add/expert/{expert}', [CartController::class, 'addExpertToCart'])->name('cart.add.expert');
 Route::post('/cart/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
 
+// Google Auth
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
 
-//CRUD
+// Articles, Experts, Courses CRUD
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('articlesCRUD', ArticleController::class);
     Route::resource('expertsCRUD', ExpertController::class);

@@ -12,10 +12,22 @@
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
     @yield('head')
 </head>
 
-<body style="font-family: 'Poppins', sans-serif;">
+<body style="font-family: 'Poppins', sans-serif; ">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -89,9 +101,9 @@
         </div>
     </nav>
 
-
-
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 
     <footer class="bg-dark text-white text-center py-3">
         <p>© 2024 MulaiDulu. All rights reserved.</p>

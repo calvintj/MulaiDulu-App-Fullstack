@@ -42,6 +42,7 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+        // Validate the request
         $request->validate([
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
@@ -50,12 +51,19 @@ class ArticleController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $data = $request->all();
+        // Collect all data from the request
+        $data = $request->only(['title', 'author', 'content', 'post_date']);
+
+        // Handle the image file
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images', 'public');
+            $path = $request->file('image')->store('images', 'public');
+            $data['image'] = $path; // Save full path relative to 'storage/app/public/'
         }
 
+        // Save the article to the database
         Article::create($data);
+
+        // Redirect back to the index page with success message
         return redirect()->route('admin.articlesCRUD.index')->with('success', 'Article created successfully.');
     }
 
