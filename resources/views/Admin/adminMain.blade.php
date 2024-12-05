@@ -27,12 +27,12 @@
     @yield('head')
 </head>
 
-<body style="font-family: 'Poppins', sans-serif; ">
+<body style="font-family: 'Poppins', sans-serif;">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <!-- Logo -->
-            <a class="navbar-brand" href="/home">
+            <a class="navbar-brand">
                 <img src="{{ asset('image/logo.png') }}" alt="Logo" style="width: 100px; height: auto;">
             </a>
 
@@ -46,40 +46,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">Home</a>
+                        <a class="nav-link" href="/admin/articlesCRUD">Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/aboutUs">About Us</a>
+                        <a class="nav-link" href="/admin/expertsCRUD">Experts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ourWorks">Our Works</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/mentorship">Mentorship</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contactUs">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile">Profile</a>
-                    </li>
-                </ul>
-
-                <!-- Cart Link -->
-                <ul class="navbar-nav me-3">
-
-                    <li class="nav-item">
-                        <a class="nav-link position-relative" href="{{ route('cart.view') }}">
-                            <i class="bi bi-cart-check"></i> Cart
-                            @php
-                                $cartCount = session('cart') ? count(session('cart')) : 0;
-                            @endphp
-                            @if ($cartCount > 0)
-                                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
-                                    {{ $cartCount }}
-                                </span>
-                            @endif
-                        </a>
+                        <a class="nav-link" href="/admin/coursesCRUD">Courses</a>
                     </li>
                 </ul>
 

@@ -79,7 +79,7 @@
                     @foreach ($experts as $expert)
                         <div class="col">
                             <div class="card h-100 shadow-sm">
-                                <img src="{{ $expert->image }}" class="card-img-top" alt="{{ $expert->name }}"
+                                <img src="{{ asset('storage/' . $expert->image) }}" class="card-img-top" alt="{{ $expert->name }}"
                                     style="object-fit: cover; height: 200px;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $expert->name }}</h5>

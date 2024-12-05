@@ -1,7 +1,7 @@
 @extends('main') <!-- Extends your custom layout -->
 
 @section('content')
-    <div class="container d-flex justify-content-center align-items-center" style="height: 750px; font-family: 'Poppins', sans-serif;">
+    <div class="container d-flex justify-content-center align-items-center vh-100" style="font-family: 'Poppins', sans-serif;">
         <!----------------------- Register Container -------------------------->
         <div class="row border rounded-5 p-3 bg-white shadow" style="width: 930px;">
             <!--------------------------- Left Box ----------------------------->

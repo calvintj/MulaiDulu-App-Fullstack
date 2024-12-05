@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section class="contact section container py-5" data-aos="fade-up" style="min-height: 730px;">
+    <section class="contact section container py-5" data-aos="fade-up">
         <div class="row g-4">
             <!-- Contact Features -->
             <div class="col-md-6 col-lg-3">
@@ -27,12 +27,12 @@
             <div class="col-md-6 col-lg-3">
                 <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
-            
+
                         {{-- for icon --}}
                         <div class="iconBox mb-3 text-danger">
                             <i class="fab fa-instagram fs-2"></i>
                         </div>
-            
+
                         <h5 class="card-title">Follow us on Instagram</h5>
                         <p class="card-text">Check out our latest updates</p>
                         <a href="https://instagram.com/mulai_dulu.id" target="_blank" class="btn btn-outline-danger">
@@ -40,16 +40,16 @@
                         </a>
                     </div>
                 </div>
-            </div>            
+            </div>
             <div class="col-md-6 col-lg-3">
                 <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
-            
+
                         {{-- for icon --}}
                         <div class="iconBox mb-3 text-primary">
                             <i class="fab fa-x-twitter fs-2"></i>
                         </div>
-            
+
                         <h5 class="card-title">Follow us on Facebook</h5>
                         <p class="card-text">Stay updated with our latest news</p>
                         <a href="https://x.com/yourusername" target="_blank" class="btn btn-outline-primary">
@@ -61,12 +61,12 @@
             <div class="col-md-6 col-lg-3">
                 <div class="card shadow-sm h-100 text-center">
                     <div class="card-body">
-            
+
                         {{-- for icon --}}
                         <div class="iconBox mb-3 text-danger">
                             <i class="fab fa-tiktok fs-2"></i>
                         </div>
-            
+
                         <h5 class="card-title">Follow us on TikTok</h5>
                         <p class="card-text">Check out our latest videos</p>
                         <a href="https://tiktok.com/@mulaidulu.id" target="_blank" class="btn btn-outline-dark">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Add more contact features here -->
         </div>
 

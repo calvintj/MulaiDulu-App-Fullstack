@@ -20,12 +20,12 @@ class ExpertController extends Controller
     public function index()
     {
         $experts = Expert::all();
-        return view('Admin.expertsCRUD', compact('experts'));
+        return view('admin.expertsCRUD', compact('experts'));
     }
 
     public function create()
     {
-        return view('Admin.expertsCRUD');
+        return view('admin.expertsCRUD');
     }
 
     public function store(Request $request)
@@ -46,19 +46,19 @@ class ExpertController extends Controller
 
         Expert::create($data);
 
-        return redirect()->route('Admin.expertsCRUD.index')->with('success', 'Expert created successfully.');
+        return redirect()->route('admin.expertsCRUD.index')->with('success', 'Expert created successfully.');
     }
 
     public function show($id)
     {
         $expert = Expert::findOrFail($id);
-        return view('Admin.expertsCRUD', compact('expert'));
+        return view('admin.expertsCRUD', compact('expert'));
     }
 
     public function edit($id)
     {
         $expert = Expert::findOrFail($id);
-        return view('Admin.expertsCRUD', compact('expert'));
+        return view('admin.expertsCRUD', compact('expert'));
     }
 
     public function update(Request $request, $id)
@@ -80,7 +80,7 @@ class ExpertController extends Controller
 
         $expert->update($data);
 
-        return redirect()->route('Admin.expertsCRUD.index')->with('success', 'Expert updated successfully.');
+        return redirect()->route('admin.expertsCRUD.index')->with('success', 'Expert updated successfully.');
     }
 
     public function destroy($id)
@@ -91,6 +91,6 @@ class ExpertController extends Controller
         }
         $expert->delete();
 
-        return redirect()->route('Admin.expertsCRUD.index')->with('success', 'Expert deleted successfully.');
+        return redirect()->route('admin.expertsCRUD.index')->with('success', 'Expert deleted successfully.');
     }
 }

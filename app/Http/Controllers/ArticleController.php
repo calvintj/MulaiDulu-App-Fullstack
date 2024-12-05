@@ -32,51 +32,59 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('Admin.articlesCRUD', compact('articles'));
+        return view('admin.articlesCRUD', compact('articles'));
     }
 
     public function create()
     {
-        return view('Admin.articlesCRUD');
+        return view('admin.articlesCRUD');
     }
 
     public function store(Request $request)
     {
+        // Validate the request
         $request->validate([
-            'judul' => 'required|string|max:255',
-            'penulis' => 'required|string|max:255',
-            'isi_article' => 'required',
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'content' => 'required',
             'post_date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $data = $request->all();
+        // Collect all data from the request
+        $data = $request->only(['title', 'author', 'content', 'post_date']);
+
+        // Handle the image file
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images', 'public');
+            $path = $request->file('image')->store('images', 'public');
+            $data['image'] = $path; // Save full path relative to 'storage/app/public/'
         }
 
+        // Save the article to the database
         Article::create($data);
-        return redirect()->route('Admin.articlesCRUD.index')->with('success', 'Article created successfully.');
+
+        // Redirect back to the index page with success message
+        return redirect()->route('admin.articlesCRUD.index')->with('success', 'Article created successfully.');
     }
 
     public function show($id)
     {
         $view = Article::findOrFail($id);
-        return view('Admin.articlesCRUD', compact('view'));
+        return view('admin.articlesCRUD', compact('view'));
     }
 
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        return view('Admin.articlesCRUD', compact('article'));
+        return view('admin.articlesCRUD', compact('article'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'judul' => 'required|string|max:255',
-            'penulis' => 'required|string|max:255',
-            'isi_article' => 'required',
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'content' => 'required',
             'post_date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -88,7 +96,7 @@ class ArticleController extends Controller
         }
 
         $article->update($data);
-        return redirect()->route('Admin.articlesCRUD.index')->with('success', 'Article updated successfully.');
+        return redirect()->route('admin.articlesCRUD.index')->with('success', 'Article updated successfully.');
     }
 
     public function destroy($id)
@@ -98,6 +106,6 @@ class ArticleController extends Controller
             Storage::delete('public/' . $article->image);
         }
         $article->delete();
-        return redirect()->route('Admin.articlesCRUD.index')->with('success', 'Article deleted successfully.');
+        return redirect()->route('admin.articlesCRUD.index')->with('success', 'Article deleted successfully.');
     }
 }

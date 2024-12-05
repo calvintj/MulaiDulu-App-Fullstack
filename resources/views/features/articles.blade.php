@@ -12,8 +12,8 @@
                         <img src="{{ asset('storage/' . $article['image']) }}" class="card-img-top"
                             alt="Image for {{ $article->judul }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $article->judul }}</h5>
-                            <p class="card-text text-muted">By {{ $article->penulis }}</p>
+                            <h5 class="card-title">{{ $article->title }}</h5>
+                            <p class="card-text text-muted">By {{ $article->author }}</p>
                             <a href="{{ url('articleDetail/' . $article->id) }}" class="btn btn-primary">
                                 View Details
                             </a>
