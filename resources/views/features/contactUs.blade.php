@@ -52,8 +52,8 @@
 
                         <h5 class="card-title">Follow us on Facebook</h5>
                         <p class="card-text">Stay updated with our latest news</p>
-                        <a href="https://x.com/yourusername" target="_blank" class="btn btn-outline-primary">
-                            @yourusername
+                        <a href="https://www.facebook.com/mulaidulu.161183" target="_blank" class="btn btn-outline-primary">
+                            @MulaiDulu
                         </a>
                     </div>
                 </div>
