@@ -31,7 +31,7 @@
                                         <div class="col-lg-5">
                                             <div class="me-lg-5">
                                                 <div class="d-flex">
-                                                    <img src="{{ $item['image'] ?? asset('images/default.png') }}"
+                                                    <img src="{{ asset('storage/' . $item['image']) }}"
                                                         class="border rounded me-3" style="width: 96px; height: 96px" />
                                                     <div>
                                                         <a href="#" class="nav-link">{{ $item['name'] }}</a>

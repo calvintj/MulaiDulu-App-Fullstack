@@ -32,7 +32,7 @@
                         @foreach ($courses as $course)
                             <div class="col">
                                 <div class="card h-100 shadow-sm">
-                                    <img src="{{ asset('storage/' . $course->image) }}" class="card-img-top"
+                                    <img src="{{ asset('storage/' . $course['image']) }}" class="card-img-top"
                                         alt="{{ $course->name }}" style="object-fit: cover; height: 200px;">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $course->name }}</h5>

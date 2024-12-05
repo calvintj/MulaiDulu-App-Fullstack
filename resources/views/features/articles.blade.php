@@ -9,7 +9,8 @@
             @foreach ($articles as $article)
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <img src="{{ $article->image }}" class="card-img-top" alt="Image for {{ $article->judul }}">
+                        <img src="{{ asset('storage/' . $article['image']) }}" class="card-img-top"
+                            alt="Image for {{ $article->judul }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->judul }}</h5>
                             <p class="card-text text-muted">By {{ $article->penulis }}</p>
@@ -30,5 +31,5 @@
             {{ $articles->links('pagination::bootstrap-4') }}
         </div>
     </div>
-    
+
 @endsection
