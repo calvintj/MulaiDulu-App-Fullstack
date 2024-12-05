@@ -7,8 +7,9 @@
         <div class="row g-4 align-items-center">
             <!-- Image Section -->
             <div class="col-md-6 text-center">
-                <img src="{{ asset('storage/' . $expert->image) }}" alt="Image of {{ $expert->name }}" class="img-fluid rounded shadow"
-                    style="max-height: 400px; object-fit: cover;">
+                <img src="{{ asset('storage/' . $expert->image) }}" alt="Image of {{ $expert->name }}"
+                     class="img-fluid rounded shadow"
+                     style="width: 350px; height: 350px; object-fit: cover;">
             </div>
 
             <!-- Text Section -->
