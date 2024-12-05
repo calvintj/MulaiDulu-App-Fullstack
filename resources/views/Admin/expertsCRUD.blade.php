@@ -35,8 +35,7 @@
                                 <td>Rp {{ number_format($exp->rate_price, 2) }}</td>
                                 <td>{{ $exp->rating }}</td>
                                 <td>
-                                    <a href="{{ route('admin.expertsCRUD.show', $exp->id) }}"
-                                        class="btn btn-info btn-sm">View</a>
+
                                     <a href="{{ route('admin.expertsCRUD.edit', $exp->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
                                     <form action="{{ route('admin.expertsCRUD.destroy', $exp->id) }}" method="POST"
@@ -81,7 +80,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="rate_price" class="form-label">Price</label>
-                    <input type="number" name="rate_price" id="rate_price" class="form-control"
+                    <input type="number" step="10000" name="rate_price" id="rate_price" class="form-control"
                         value="{{ old('rate_price', $expert->rate_price ?? '') }}" required>
                 </div>
                 <div class="mb-3">
@@ -100,5 +99,6 @@
                 <a href="{{ route('admin.expertsCRUD.index') }}" class="btn btn-secondary">Cancel</a>
             </form>
         @endif
+
     </div>
 @endsection

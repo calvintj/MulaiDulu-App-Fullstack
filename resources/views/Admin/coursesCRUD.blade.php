@@ -31,8 +31,7 @@
                                 <td>{{ $c->name }}</td>
                                 <td>${{ number_format($c->price, 2) }}</td>
                                 <td>
-                                    <a href="{{ route('admin.coursesCRUD.show', $c->id) }}"
-                                        class="btn btn-info btn-sm">View</a>
+
                                     <a href="{{ route('admin.coursesCRUD.edit', $c->id) }}"
                                         class="btn btn-warning btn-sm">Edit</a>
                                     <form action="{{ route('admin.coursesCRUD.destroy', $c->id) }}" method="POST"
@@ -73,7 +72,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input type="number" step="0.01" name="price" id="price" class="form-control"
+                    <input type="number" step="10000" name="price" id="price" class="form-control"
                         value="{{ old('price', $course->price ?? '') }}" required>
                 </div>
                 <div class="mb-3">

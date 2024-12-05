@@ -27,45 +27,49 @@
                                 </div>
                                 <hr />
                                 @foreach ($cart as $id => $item)
-                                    <div class="row gy-3 mb-4">
-                                        <div class="col-lg-5">
-                                            <div class="me-lg-5">
-                                                <div class="d-flex">
-                                                    <img src="{{ $item['image'] ?? asset('images/default.png') }}"
-                                                        class="border rounded me-3" style="width: 96px; height: 96px" />
-                                                    <div>
-                                                        <a href="#" class="nav-link">{{ $item['name'] }}</a>
-                                                        <p class="text-muted">${{ $item['price'] }}</p>
-                                                    </div>
-                                                </div>
+                                    <div class="row align-items-center mb-4">
+                                        <!-- Image and Name -->
+                                        <div class="col-12 col-md-5 d-flex align-items-center mb-3 mb-md-0">
+                                            <img src="{{ $item['image'] ? Storage::url($item['image']) : asset('images/default.png') }}"
+                                                class="border rounded me-3" style="width: 96px; height: 96px;" />
+                                            <div>
+                                                <a href="#" class="nav-link fw-bold">{{ $item['name'] }}</a>
+                                                <p class="text-muted mb-1">Rp {{ $item['price'] }}</p>
                                             </div>
                                         </div>
-                                        <div
-                                            class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
-                                            <div class="input-group">
-                                                <form action="{{ route('cart.decrease', $id) }}" method="POST"
-                                                    style="display: inline;">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-outline-secondary">-</button>
-                                                </form>
-                                                <input type="text" class="form-control text-center"
-                                                    value="{{ $item['quantity'] }}" readonly />
-                                                <form action="{{ route('cart.increase', $id) }}" method="POST"
-                                                    style="display: inline;">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-outline-secondary">+</button>
-                                                </form>
-                                            </div>
 
-                                            <p class="h6 mt-2">
-                                                ${{ $item['quantity'] * $item['price'] }}
+                                        <!-- Quantity and Total Price -->
+                                        <div
+                                            class="col-12 col-md-4 d-flex align-items-center justify-content-between justify-content-md-center mb-3 mb-md-0">
+                                            <div class="d-flex align-items-center">
+                                                <form action="{{ route('cart.decrease', $id) }}" method="POST"
+                                                    class="m-0">
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="btn btn-outline-secondary btn-sm px-3">-</button>
+                                                </form>
+                                                <input type="text" class="form-control text-center mx-2"
+                                                    value="{{ $item['quantity'] }}" readonly
+                                                    style="width: 50px; height: 36px;" />
+                                                <form action="{{ route('cart.increase', $id) }}" method="POST"
+                                                    class="m-0">
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="btn btn-outline-secondary btn-sm px-3">+</button>
+                                                </form>
+                                            </div>
+                                            <p class="ms-3 mb-0 fw-bold text-nowrap" style="white-space: nowrap;">
+                                                Rp {{ number_format($item['quantity'] * $item['price'], 2, '.', ',') }}
                                             </p>
+
                                         </div>
-                                        <div class="col-lg col-sm-6 d-flex justify-content-end">
-                                            <form action="{{ route('cart.remove', $id) }}" method="POST">
+
+                                        <!-- Remove Button -->
+                                        <div class="col-12 col-md-3 d-flex justify-content-md-end">
+                                            <form action="{{ route('cart.remove', $id) }}" method="POST" class="m-0">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-light border text-danger">Remove</button>
+                                                <button class="btn btn-light border text-danger btn-sm">Remove</button>
                                             </form>
                                         </div>
                                     </div>
@@ -75,9 +79,6 @@
                                 <p>
                                     <i class="fas fa-truck text-muted fa-lg"></i> Free Delivery
                                     within 1-2 weeks
-                                </p>
-                                <p class="text-muted">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                 </p>
                             </div>
                         </div>
@@ -95,8 +96,10 @@
                             <div class="d-flex justify-content-between">
                                 <p>Total Price:</p>
                                 <p class="fw-bold">
-                                    ${{ array_sum(array_map(fn($item) => $item['quantity'] * $item['price'], $cart ?? [])) }}
+                                    Rp
+                                    {{ number_format(array_sum(array_map(fn($item) => $item['quantity'] * $item['price'], $cart ?? [])), 2, '.', ',') }}
                                 </p>
+
                             </div>
                             <form id="checkoutForm">
                                 @csrf

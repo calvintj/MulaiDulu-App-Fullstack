@@ -27,15 +27,15 @@
             @else
                 <!-- Text Section -->
                 <div class="col-md-6">
-                    <h1 class="mb-3">{{ $articles[0]->title }}</h1>
-                    <p class="text-muted">By {{ $articles[0]->author }}</p>
-                    <p>{{ Str::limit($articles[0]->isi_article, 200) }} {{-- Limit to 200 characters for summary --}}</p>
+                    <h1 class="mb-3">{{ $articles[1]->title }}</h1>
+                    <p class="text-muted">By {{ $articles[1]->author }}</p>
+                    <p>{{ Str::limit($articles[1]->isi_article, 200) }} {{-- Limit to 200 characters for summary --}}</p>
                     <a href="{{ url('articles') }}" class="btn btn-primary">More Articles</a>
                 </div>
 
                 <!-- Image Section -->
                 <div class="col-md-6 text-center">
-                    <img src="{{ asset('storage/' . $articles[0]->image) }}" alt="Image for {{ $articles[0]->title }}"
+                    <img src="{{ asset('storage/' . $articles[1]->image) }}" alt="Image for {{ $articles[0]->title }}"
                         class="img-fluid rounded" style="width: 300px; height: 200px; object-fit: cover;">
                 </div>
             @endif
@@ -50,11 +50,11 @@
                 <div class="row justify-content-center">
                     <div class="col-md-15">
                         <div id="expertCarousel" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel"
-                            style="height: 500px;">
+                            style="height: 400px; width: 400px">
                             {{-- Indicators --}}
                             @if ($experts->isNotEmpty())
                                 <div class="carousel-indicators">
-                                    @foreach($experts as $key => $expert)
+                                    @foreach ($experts as $key => $expert)
                                         <button type="button" data-bs-target="#expertCarousel"
                                             data-bs-slide-to="{{ $key }}"
                                             @if ($loop->first) class="active" aria-current="true" @endif
@@ -114,7 +114,7 @@
             @if ($experts->isNotEmpty())
                 <div class="col-md-6">
                     <h1 class="mb-3">{{ $experts[0]->name }}</h1>
-                    <p class="text-muted">By {{ $experts[0]->expertise }}</p>
+                    <p class="text-muted">{{ $experts[0]->expertise }}</p>
                     <p>{{ Str::limit($experts[0]->bio, 200) }}</p>
                     <a href="{{ url('experts') }}" class="btn btn-primary">More Experts</a>
                 </div>
