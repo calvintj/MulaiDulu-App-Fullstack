@@ -7,7 +7,7 @@
         <div class="row g-4 align-items-center">
             <!-- Image Section -->
             <div class="col-md-6 text-center">
-                <img src="{{ asset('storage/' . $article->image) }}" alt="Image for {{ $article->title }}"
+                <img src="{{ Storage::url($article['image']) }}" alt="Image for {{ $article->title }}"
                      class="img-fluid rounded shadow" style="width: 500px; height: 400px; object-fit: cover;">
             </div>
 

@@ -35,7 +35,7 @@
 
                 <!-- Image Section -->
                 <div class="col-md-6 text-center">
-                    <img src="{{ asset('storage/' . $articles[1]->image) }}" alt="Image for {{ $articles[0]->title }}"
+                    <img src="{{ Storage::url($articles[1]['image']) }}" alt="Image for {{ $articles[1]->title }}"
                         class="img-fluid rounded" style="width: 300px; height: 200px; object-fit: cover;">
                 </div>
             @endif
@@ -68,7 +68,7 @@
                                 @forelse($experts as $expert)
                                     <div class="carousel-item {{ $loop->first ? 'active' : '' }} h-100">
                                         @if ($expert->image)
-                                            <img src="{{ asset('storage/' . $expert->image) }}" class="d-block w-100 h-100"
+                                            <img src="{{ Storage::url($expert['image']) }}" class="d-block w-100 h-100"
                                                 alt="{{ $expert->name }}" style="object-fit: cover;">
                                         @else
                                             <img src="{{ asset('images/default-expert.jpg') }}" class="d-block w-100 h-100"

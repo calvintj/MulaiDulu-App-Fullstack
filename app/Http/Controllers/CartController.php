@@ -33,10 +33,13 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', "{$course->name} added to cart!");
+        return redirect()
+            ->back()
+            ->with('success', "{$course->name} added to cart!");
     }
 
-    public function addExpertToCart(Request $request, Expert $expert){
+    public function addExpertToCart(Request $request, Expert $expert)
+    {
         $cart = session()->get('cart', []);
 
         if (isset($cart['expert_' . $expert->id])) {
@@ -48,12 +51,13 @@ class CartController extends Controller
                 'quantity' => 1,
                 'image' => $expert->image,
             ];
-    }
+        }
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', "{$expert->name} added to cart!");
+        return redirect()
+            ->back()
+            ->with('success', "{$expert->name} added to cart!");
     }
-
 
     public function viewCart()
     {
@@ -84,8 +88,6 @@ class CartController extends Controller
         return redirect()->route('cart.view');
     }
 
-
-
     public function clearCart()
     {
         session()->forget('cart');
@@ -103,5 +105,4 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Item removed from cart!');
     }
-    
 }

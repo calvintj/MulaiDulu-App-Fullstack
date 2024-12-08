@@ -26,9 +26,13 @@ class CheckoutController extends Controller
             DB::beginTransaction();
 
             // Calculate total price
-            $total = array_reduce($cart, function ($sum, $item) {
-                return $sum + ($item['price'] * $item['quantity']);
-            }, 0);
+            $total = array_reduce(
+                $cart,
+                function ($sum, $item) {
+                    return $sum + $item['price'] * $item['quantity'];
+                },
+                0,
+            );
 
             // Create order
             $order = Order::create([
@@ -79,17 +83,17 @@ class CheckoutController extends Controller
             // Set 3DS transaction for credit card to true
             \Midtrans\Config::$is3ds = true;
 
-            $params = array(
-                'transaction_details' => array(
+            $params = [
+                'transaction_details' => [
                     'order_id' => 'ORDER-' . $order->id,
                     'gross_amount' => $total,
-                ),
+                ],
                 'customer_details' => [
                     'first_name' => Auth::user()->name,
                     'email' => Auth::user()->email,
                     'phone' => Auth::user()->phone ?? '0000000000', // Default if phone is missing
                 ],
-            );
+            ];
 
             $snapToken = \Midtrans\Snap::getSnapToken($params);
 
@@ -97,11 +101,6 @@ class CheckoutController extends Controller
             session()->forget('cart');
 
             DB::commit();
-
-            // return redirect()->route('mentorship.index')->with([
-            //     'success' => 'Order successfully placed!',
-            //     'snapToken' => $snapToken,
-            // ]);
 
             return response()->json(['snapToken' => $snapToken], 200);
         } catch (\Exception $e) {
